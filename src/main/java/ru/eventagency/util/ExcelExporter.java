@@ -8,13 +8,33 @@ import java.util.List;
 
 public class ExcelExporter {
     public void exportEvents(List<Event> events, String fileName) throws IOException {
-        try(Workbook workbook=new XSSFWorkbook()){
-            Sheet sheet=workbook.createSheet("Event orders");
-            String[] headers={"ID","Название","Тип","Статус","Дата","Бюджет","Клиент","Описание"};
-            Row header=sheet.createRow(0);for(int i=0;i<headers.length;i++)header.createCell(i).setCellValue(headers[i]);
-            for(int i=0;i<events.size();i++){Event e=events.get(i);Row row=sheet.createRow(i+1);row.createCell(0).setCellValue(e.getId());row.createCell(1).setCellValue(e.getTitle());row.createCell(2).setCellValue(e.getType().name());row.createCell(3).setCellValue(e.getStatus().name());row.createCell(4).setCellValue(e.getEventDate().toString());row.createCell(5).setCellValue(e.getBudget().doubleValue());row.createCell(6).setCellValue(e.getClientName());row.createCell(7).setCellValue(e.getDescription()==null?"":e.getDescription());}
-            for(int i=0;i<headers.length;i++)sheet.autoSizeColumn(i);
-            try(OutputStream out=new FileOutputStream(fileName)){workbook.write(out);}
+        try (Workbook workbook = new XSSFWorkbook()) {
+            Sheet sheet = workbook.createSheet("Event orders");
+            String[] headers = {"ID", "Название", "Тип", "Статус", "Дата", "Бюджет", "Клиент", "Описание"};
+            Row header = sheet.createRow(0);
+            for (int index = 0; index < headers.length; index++) {
+                header.createCell(index).setCellValue(headers[index]);
+            }
+            for (int index = 0; index < events.size(); index++) {
+                writeEventRow(sheet.createRow(index + 1), events.get(index));
+            }
+            for (int index = 0; index < headers.length; index++) {
+                sheet.autoSizeColumn(index);
+            }
+            try (OutputStream output = new FileOutputStream(fileName)) {
+                workbook.write(output);
+            }
         }
+    }
+
+    private void writeEventRow(Row row, Event event) {
+        row.createCell(0).setCellValue(event.getId());
+        row.createCell(1).setCellValue(event.getTitle());
+        row.createCell(2).setCellValue(event.getType().name());
+        row.createCell(3).setCellValue(event.getStatus().name());
+        row.createCell(4).setCellValue(event.getEventDate().toString());
+        row.createCell(5).setCellValue(event.getBudget().doubleValue());
+        row.createCell(6).setCellValue(event.getClientName());
+        row.createCell(7).setCellValue(event.getDescription() == null ? "" : event.getDescription());
     }
 }

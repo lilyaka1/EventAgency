@@ -20,4 +20,11 @@ mvn clean package
 java -jar target/event-agency-1.0-SNAPSHOT.jar
 ```
 
+Если Maven сообщает, что `JAVA_HOME` не настроен, на macOS используйте команду:
+
+```bash
+cd "/Users/lilyaka/Desktop/раб.тетради/event agency"
+JAVA_HOME=$(/usr/libexec/java_home) java -jar target/event-agency-1.0-SNAPSHOT.jar
+```
+
 Система поддерживает клиентов и заказы на организацию мероприятий, CRUD, поиск, фильтрацию, сортировку, статистику и экспорт заказов в Excel.

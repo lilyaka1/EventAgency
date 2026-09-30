@@ -14,6 +14,12 @@ public class DatabaseManager {
         user = env("DB_USER", "postgres");
         password = env("DB_PASSWORD", "postgres");
     }
-    private String env(String name, String fallback) { return System.getenv().getOrDefault(name, fallback); }
-    public Connection getConnection() throws SQLException { return DriverManager.getConnection(url, user, password); }
+
+    private String env(String name, String fallback) {
+        return System.getenv().getOrDefault(name, fallback);
+    }
+
+    public Connection getConnection() throws SQLException {
+        return DriverManager.getConnection(url, user, password);
+    }
 }

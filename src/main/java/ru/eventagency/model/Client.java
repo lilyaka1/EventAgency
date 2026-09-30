@@ -7,13 +7,44 @@ public class Client {
     private String phone;
 
     public Client(Integer id, String fullName, String email, String phone) {
-        this.id = id; this.fullName = fullName; this.email = email; this.phone = phone;
+        this.id = id;
+        this.fullName = fullName;
+        this.email = email;
+        this.phone = phone;
     }
-    public Client(String fullName, String email, String phone) { this(null, fullName, email, phone); }
-    public Integer getId() { return id; }
-    public void setId(Integer id) { this.id = id; }
-    public String getFullName() { return fullName; }
-    public String getEmail() { return email; }
-    public String getPhone() { return phone; }
-    @Override public String toString() { return "Client{id=" + id + ", name='" + fullName + "', email='" + email + "', phone='" + phone + "'}"; }
+
+    public Client(String fullName, String email, String phone) {
+        this(null, fullName, email, phone);
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public boolean hasValidContactDetails() {
+        return fullName != null && !fullName.isBlank()
+                && email != null && email.contains("@")
+                && phone != null && !phone.isBlank();
+    }
+
+    @Override
+    public String toString() {
+        return "Client{id=" + id + ", name='" + fullName + "', email='" + email + "', phone='" + phone + "'}";
+    }
 }
