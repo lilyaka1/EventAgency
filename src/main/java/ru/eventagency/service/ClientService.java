@@ -48,5 +48,14 @@ public class ClientService {
         if (!client.hasValidContactDetails()) {
             throw new BusinessException("Укажите ФИО, корректный email и телефон клиента");
         }
+        if (client.getFullName().length() > 120) {
+            throw new BusinessException("ФИО не может быть длиннее 120 символов");
+        }
+        if (client.getEmail().length() > 160 || !client.getEmail().matches("^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$")) {
+            throw new BusinessException("Введите корректный email длиной не более 160 символов");
+        }
+        if (client.getPhone().length() > 30) {
+            throw new BusinessException("Телефон не может быть длиннее 30 символов");
+        }
     }
 }

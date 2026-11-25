@@ -1,0 +1,40 @@
+.root {
+    -fx-font-family: "Segoe UI", "Arial";
+    -fx-background-color: #f4f6f8;
+}
+.toolbar {
+    -fx-background-color: white;
+    -fx-border-color: transparent transparent #d8dee6 transparent;
+}
+.title {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #263238;
+}
+.section-title {
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+}
+.button {
+    -fx-background-radius: 5;
+    -fx-padding: 7 12;
+}
+.button.primary {
+    -fx-background-color: #1976d2;
+    -fx-text-fill: white;
+}
+.button.danger {
+    -fx-background-color: #c62828;
+    -fx-text-fill: white;
+}
+.table-view {
+    -fx-background-insets: 12;
+}
+.table-view .column-header {
+    -fx-background-color: #455a64;
+    -fx-text-fill: white;
+}
+.statistics {
+    -fx-background-color: white;
+    -fx-border-color: #d8dee6 transparent transparent transparent;
+}

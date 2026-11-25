@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="ru.eventagency.fx.EventController">
+    <top>
+        <VBox spacing="10" styleClass="toolbar">
+            <padding><Insets top="12" right="12" bottom="12" left="12"/></padding>
+            <Label text="Заказы агентства мероприятий" styleClass="title"/>
+            <HBox spacing="8" alignment="CENTER_LEFT">
+                <TextField fx:id="searchField" promptText="Поиск по названию или описанию" prefWidth="260"/>
+                <ComboBox fx:id="statusFilter" promptText="Статус" prefWidth="150"/>
+                <ComboBox fx:id="typeFilter" promptText="Тип" prefWidth="150"/>
+                <ComboBox fx:id="sortField" promptText="Сортировка" prefWidth="170"/>
+                <Button text="Поиск" onAction="#onSearch"/>
+                <Button text="Сброс" onAction="#onReset"/>
+                <Pane HBox.hgrow="ALWAYS"/>
+                <Button text="Добавить" onAction="#onAdd" styleClass="primary"/>
+                <Button text="Изменить" onAction="#onEdit"/>
+                <Button text="Удалить" onAction="#onDelete" styleClass="danger"/>
+                <Button text="Экспорт" onAction="#onExport"/>
+            </HBox>
+        </VBox>
+    </top>
+    <center>
+        <TableView fx:id="eventTable">
+            <columns>
+                <TableColumn fx:id="idColumn" text="ID" prefWidth="55"/>
+                <TableColumn fx:id="titleColumn" text="Название" prefWidth="210"/>
+                <TableColumn fx:id="clientColumn" text="Клиент" prefWidth="180"/>
+                <TableColumn fx:id="typeColumn" text="Тип" prefWidth="130"/>
+                <TableColumn fx:id="statusColumn" text="Статус" prefWidth="130"/>
+                <TableColumn fx:id="dateColumn" text="Дата" prefWidth="110"/>
+                <TableColumn fx:id="budgetColumn" text="Бюджет" prefWidth="130"/>
+            </columns>
+        </TableView>
+    </center>
+    <bottom>
+        <VBox spacing="8" styleClass="statistics">
+            <padding><Insets top="10" right="12" bottom="10" left="12"/></padding>
+            <Label text="Статистика" styleClass="section-title"/>
+            <GridPane hgap="18" vgap="5">
+                <Label fx:id="totalLabel" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                <Label fx:id="plannedLabel" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                <Label fx:id="completedLabel" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+                <Label fx:id="budgetLabel" GridPane.columnIndex="3" GridPane.rowIndex="0"/>
+                <Label fx:id="averageLabel" GridPane.columnIndex="4" GridPane.rowIndex="0"/>
+            </GridPane>
+        </VBox>
+    </bottom>
+</BorderPane>

@@ -1,13 +1,13 @@
 package ru.eventagency;
 
-import ru.eventagency.ui.ConsoleApplication;
+import ru.eventagency.fx.EventAgencyApplication;
 
-/** Entry point of the application. */
+/** JavaFX entry point of the application. */
 public final class Main {
     private Main() {
     }
 
     public static void main(String[] args) {
-        new ConsoleApplication().run();
+        EventAgencyApplication.launchApp(args);
     }
 }

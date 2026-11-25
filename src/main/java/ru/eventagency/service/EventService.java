@@ -92,6 +92,12 @@ public class EventService {
         if (event.getTitle() == null || event.getTitle().isBlank()) {
             throw new BusinessException("Название заказа обязательно");
         }
+        if (event.getTitle().length() > 160) {
+            throw new BusinessException("Название заказа не может быть длиннее 160 символов");
+        }
+        if (event.getDescription() != null && event.getDescription().length() > 10000) {
+            throw new BusinessException("Описание не может быть длиннее 10000 символов");
+        }
         if (event.getType() == null || event.getStatus() == null) {
             throw new BusinessException("Тип и статус обязательны");
         }

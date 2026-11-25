@@ -1,0 +1,22 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: event-agency-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-event_agency}
+      POSTGRES_USER: ${POSTGRES_USER:-event_agency_app}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-event_agency_password}
+    ports:
+      - "${POSTGRES_PORT:-5433}:5432"
+    volumes:
+      - event_agency_data:/var/lib/postgresql/data
+      - ./schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-event_agency_app} -d ${POSTGRES_DB:-event_agency}"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+volumes:
+  event_agency_data:

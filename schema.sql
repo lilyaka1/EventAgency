@@ -1,6 +1,3 @@
-CREATE DATABASE event_agency;
-\c event_agency;
-
 CREATE TABLE clients (
     id SERIAL PRIMARY KEY,
     full_name VARCHAR(120) NOT NULL,
@@ -33,7 +30,7 @@ INSERT INTO event_orders(client_id, title, event_type, status, event_date, budge
 (2, 'IT-конференция', 'CONFERENCE', 'PLANNED', '2026-07-03', 480000, 'Сцена и техническое сопровождение'),
 (3, 'День рождения', 'BIRTHDAY', 'COMPLETED', '2026-02-14', 90000, 'Вечеринка на 30 гостей'),
 (4, 'Корпоратив компании', 'CORPORATE', 'CONFIRMED', '2026-09-18', 320000, 'Фуршет и ведущий'),
-('5', 'Юбилей', 'OTHER', 'CANCELLED', '2026-04-20', 150000, 'Мероприятие отменено клиентом'),
+(5, 'Юбилей', 'OTHER', 'CANCELLED', '2026-04-20', 150000, 'Мероприятие отменено клиентом'),
 (1, 'Свадьба Ирины', 'WEDDING', 'PLANNED', '2026-10-10', 310000, 'Декор и координация'),
 (2, 'Презентация продукта', 'CORPORATE', 'CONFIRMED', '2026-11-05', 210000, 'Зал и оборудование'),
 (3, 'Детский праздник', 'BIRTHDAY', 'PLANNED', '2026-12-12', 75000, 'Аниматоры и кенди-бар'),

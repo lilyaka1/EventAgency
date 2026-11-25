@@ -1,11 +1,23 @@
 # Event Agency: заказы на организацию мероприятий
 
-Консольная информационная система агентства мероприятий на Java 17, PostgreSQL и JDBC.
+Настольная информационная система агентства мероприятий на JavaFX, PostgreSQL и JDBC.
 
 ## Запуск PostgreSQL
 
-1. Выполнить `schema.sql` в PostgreSQL.
-2. При необходимости изменить переменные окружения:
+Через Docker:
+
+```bash
+docker compose up -d --wait
+```
+
+PostgreSQL будет доступен на порту `5433`. Для остановки сохранения данных:
+
+```bash
+docker compose down
+```
+
+Параметры подключения находятся в `src/main/resources/database.properties`.
+Для запуска вне Docker при необходимости измените переменные окружения:
 
 ```text
 DB_URL=jdbc:postgresql://localhost:5432/event_agency
@@ -17,6 +29,12 @@ DB_PASSWORD=postgres
 
 ```bash
 mvn clean package
+mvn javafx:run
+```
+
+Для запуска через собранный JAR используйте:
+
+```bash
 java -jar target/event-agency-1.0-SNAPSHOT.jar
 ```
 
